@@ -1,0 +1,1 @@
+i think i want to create several servers for various projects. I believe i'll play with this and build a few things, hopefully i don't dump this like everyother project. That's why i made it public
