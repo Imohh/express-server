@@ -7,6 +7,7 @@ const connection = require("./db")
 const userRoutes = require("./routes/users")
 const authRoutes = require("./routes/auth")
 const useRoutes = require("./routes/user")
+const logoutRoutes = require("./routes/logout")
 
 // database connection
 connection()
@@ -19,6 +20,7 @@ app.use(cors())
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/api/users", useRoutes)
+app.use("/logout", logoutRoutes);
 
 
 // PORT

@@ -2,6 +2,8 @@ const router = require("express").Router()
 const {User, validate} = require("../models/user")
 const CryptoJS = require("crypto-js");
 
+
+// REGISTER
 router.post("/", async(req, res) => {
 
 
