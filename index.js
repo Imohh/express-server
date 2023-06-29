@@ -20,7 +20,7 @@ app.use(cors())
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/api/users", useRoutes)
-app.use("/logout", logoutRoutes);
+app.use("/api/logout", logoutRoutes);
 
 
 // PORT
