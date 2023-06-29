@@ -18,7 +18,7 @@ app.use(cors())
 //routes
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
-app.use("/api/user", useRoutes)
+app.use("/api/users", useRoutes)
 
 
 // PORT
