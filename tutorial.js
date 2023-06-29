@@ -1,28 +1,49 @@
 const express = require('express')
+const dotenv = require('dotenv')
 const app = express()
 
+dotenv.config()
+
+app.use(express.json())
+
 const courses = [
-	{ id: 1, name: 'courses1' },
-	{ id: 2, name: 'courses2' },
-	{ id: 3, name: 'courses3' }
-];	
+	{ id: 1, name: "Physics" },
+	{ id: 2, name: "Biology" },
+	{ id: 3, name: "Chemistry" }
+]
 
-// GET METHOD
-app.get('/', (req, res) => {
-	res.send('HELLO WORLD!!!');
-});
 
+// GET ALL COURSES
 app.get('/api/courses', (req, res) => {
-	res.send(courses);
-});
+	res.send(courses)
+})
 
+
+// GET SPECIFIC COURSE
 app.get('/api/courses/:id', (req, res) => {
-	const course = courses.find(c => c.id === parseInt(req.params.id));
-	if(!course) res.status(404).send('Not a valid ID');
-	res.send(course);
-});
+	const course = courses.find(c => c.id === parseInt(req.params.id))
+	if(!course) return res.status(404).send("Invalid ID")
+	res.send(course)
+})
 
-// END OF GET METHOD
 
-const port = 4000;
-app.listen(4000, () => console.log('Listening from port 4000...'));
+// POST METHOD
+app.post('/api/courses', (req, res) => {
+	const course = {
+		id: courses.length + 1,
+		name: req.body.name
+	}
+
+	courses.push(course)
+
+	if(!course.name || course.name.length < 3) return res.status(404).send("Invalid Name")
+	res.send(course)
+
+})
+
+app.put('/api/courses/:id', (req, res) => {
+
+})
+
+const port = process.env.PORT_1 || 3000
+app.listen(port, () => console.log(`Listening from ${port}...`))
